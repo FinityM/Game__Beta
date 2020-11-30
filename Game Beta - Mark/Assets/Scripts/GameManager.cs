@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     private float xSpawn = 50;
     private float ySpawnRange = 10;
     private int score;
-    public bool isGameActive;
+    public bool isGameActive = false;
 
     public List<GameObject> objects;
     public List<GameObject> clouds;
@@ -23,20 +23,21 @@ public class GameManager : MonoBehaviour
 
     public Button restartButton;
 
-    private Difficulty difficulty;
+    private MoveLeft moveLeftVar;
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        StartGame();
-        //difficulty.setDifficulty();
-        
+        easyStartGame();
+        mediumStartGame();
+        hardStartGame();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+       
     }
 
     IEnumerator Spawner()
@@ -53,21 +54,21 @@ public class GameManager : MonoBehaviour
             int cloudIndex = Random.Range(0, clouds.Count);
 
             Instantiate(objects[objectIndex], randomSpawn, objects[objectIndex].transform.rotation);
-            Instantiate(clouds[cloudIndex], cloudRandomSpawn, objects[cloudIndex].transform.rotation);            
+            Instantiate(clouds[cloudIndex], cloudRandomSpawn, objects[cloudIndex].transform.rotation);
             Instantiate(powerup, powerupRandomSpawn, powerup.transform.rotation);
 
         }
 
     }
 
-    
-   public void UpdateScore(int scoreToAdd)
+
+    public void UpdateScore(int scoreToAdd)
     {
         score += scoreToAdd;
         scoreText.text = "Score: " + score;
     }
 
-    
+
     public void GameOver()
     {
         isGameActive = false;
@@ -75,14 +76,26 @@ public class GameManager : MonoBehaviour
         restartButton.gameObject.SetActive(true);
     }
 
+    // Caused issues from editor in the game alpha, was missing an EventSystem
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        Debug.Log("Restart was pressed"); // Caused issues from editor, was missing an EventSystem
+        Debug.Log("Restart was pressed");
     }
 
-    public void StartGame()
+    public void easyStartGame()
     {
+        isGameActive = true;
+        score = 0;
+
+        StartCoroutine(Spawner());
+        UpdateScore(0);
+        titleScreen.gameObject.SetActive(false);
+    }
+
+    public void mediumStartGame()
+    {
+        //moveLeftVar.speed *= 2;
         isGameActive = true;
         score = 0;
 
@@ -92,4 +105,15 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void hardStartGame()
+    {
+        //moveLeftVar.speed *= 3;
+        isGameActive = true;
+        score = 0;
+
+        StartCoroutine(Spawner());
+        UpdateScore(0);
+        titleScreen.gameObject.SetActive(false);
+
+    }
 }

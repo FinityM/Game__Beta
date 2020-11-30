@@ -5,22 +5,21 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private float speed = 20.0f;
     private float xBound = 16;
     private float yBound = 11;
     private float verticalInput;
     private float horizontalInput;
     public int pointValue;
-    public bool gameOver;
+    public float speed = 20.0f;
 
     private GameObject rudolphObject;
     private Collider playerCollider;
     private AudioSource playerAudio;
+    private GameManager gameManager;
     public AudioClip goodiesSound;
     public AudioClip explosionSound;
     public ParticleSystem pickedItemParticle;
     public ParticleSystem explodeParticle;
-    private GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
@@ -48,8 +47,6 @@ public class PlayerController : MonoBehaviour
 
         if (gameManager.isGameActive)
         {
-            //rudolphObject.SetActive(true); Figure out how to make player appear in beta
-
             // Move around the screen
             transform.position = transform.position + new Vector3(0, verticalInput * speed * Time.deltaTime, 0);
             transform.position = transform.position + new Vector3(horizontalInput * speed * Time.deltaTime, 0, 0);
