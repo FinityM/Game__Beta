@@ -29,9 +29,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        easyStartGame();
-        mediumStartGame();
-        hardStartGame();
+        moveLeftVar.passSpeed = moveLeftVar.speed;
     }
 
     // Update is called once per frame
@@ -93,9 +91,9 @@ public class GameManager : MonoBehaviour
         titleScreen.gameObject.SetActive(false);
     }
 
-    public void mediumStartGame()
+    public void mediumStartGame(float mediumSpeed)
     {
-        //moveLeftVar.speed *= 2;
+        mediumSpeed = moveLeftVar.passSpeed *= 2;
         isGameActive = true;
         score = 0;
 
@@ -107,7 +105,7 @@ public class GameManager : MonoBehaviour
 
     public void hardStartGame()
     {
-        //moveLeftVar.speed *= 3;
+        moveLeftVar.speed *= 3;
         isGameActive = true;
         score = 0;
 

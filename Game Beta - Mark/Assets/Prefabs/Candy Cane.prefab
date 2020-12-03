@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4620045278281161099}
   - component: {fileID: 4620045278281161102}
   - component: {fileID: 4620045278281161098}
+  - component: {fileID: 7528306604499674975}
   m_Layer: 0
   m_Name: Candy Cane
   m_TagString: Goodies
@@ -60,6 +61,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 14
+--- !u!114 &7528306604499674975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4620045278281161103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d5151423b5ffc548bf471623450af11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spinSpeed: 50
 --- !u!1001 &6672233407622030356
 PrefabInstance:
   m_ObjectHideFlags: 0

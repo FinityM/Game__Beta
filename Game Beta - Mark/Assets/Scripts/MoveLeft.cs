@@ -34,4 +34,17 @@ public class MoveLeft : MonoBehaviour
     {
         transform.Translate(Vector3.left * speed * Time.deltaTime, Space.World);
     }
+
+    public float passSpeed
+    {
+        get
+        {
+            return this.speed;
+        }
+
+        set
+        {
+            speed = value;
+        }
+    }
 }

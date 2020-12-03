@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2171568066375540218}
   - component: {fileID: 6354777414868074154}
   - component: {fileID: 2171568066375540219}
+  - component: {fileID: 6921566375184341064}
   m_Layer: 0
   m_Name: 'Box Present '
   m_TagString: Goodies
@@ -59,6 +60,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 13
+--- !u!114 &6921566375184341064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2171568066375540222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d5151423b5ffc548bf471623450af11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spinSpeed: 50
 --- !u!1001 &1820266269891241296
 PrefabInstance:
   m_ObjectHideFlags: 0

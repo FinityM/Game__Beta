@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6258601925484948998}
   - component: {fileID: 6258601925484948999}
   - component: {fileID: 1571219973994599461}
+  - component: {fileID: -489805928489427583}
   m_Layer: 0
   m_Name: Present
   m_TagString: Goodies
@@ -59,6 +60,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.1713681, y: 2.281922, z: 1.0000002}
   m_Center: {x: 0.0036394596, y: 0.9833156, z: -0.00000011920929}
+--- !u!114 &-489805928489427583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6258601925484948994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d5151423b5ffc548bf471623450af11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spinSpeed: 50
 --- !u!1001 &5170359629552740411
 PrefabInstance:
   m_ObjectHideFlags: 0
