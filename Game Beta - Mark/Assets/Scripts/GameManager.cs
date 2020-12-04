@@ -11,25 +11,25 @@ public class GameManager : MonoBehaviour
     private float xSpawn = 50;
     private float ySpawnRange = 10;
     private int score;
+    public float objectSpeedMultiplier = 1;
     public bool isGameActive = false;
 
     public List<GameObject> objects;
     public List<GameObject> clouds;
     public GameObject powerup;
     public GameObject titleScreen;
-
+   
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI gameOverText;
 
     public Button restartButton;
 
-    private MoveLeft moveLeftVar;
-    
-
     // Start is called before the first frame update
     void Start()
     {
-        moveLeftVar.passSpeed = moveLeftVar.speed;
+      
+        
+    
     }
 
     // Update is called once per frame
@@ -51,9 +51,13 @@ public class GameManager : MonoBehaviour
             int objectIndex = Random.Range(0, objects.Count);
             int cloudIndex = Random.Range(0, clouds.Count);
 
-            Instantiate(objects[objectIndex], randomSpawn, objects[objectIndex].transform.rotation);
-            Instantiate(clouds[cloudIndex], cloudRandomSpawn, objects[cloudIndex].transform.rotation);
-            Instantiate(powerup, powerupRandomSpawn, powerup.transform.rotation);
+            GameObject spawnNewObject = Instantiate(objects[objectIndex], randomSpawn, objects[objectIndex].transform.rotation);
+            spawnNewObject.GetComponent<MoveLeft>().speed *= objectSpeedMultiplier;
+            GameObject spawnNewCloudObject = Instantiate(clouds[cloudIndex], cloudRandomSpawn, objects[cloudIndex].transform.rotation);
+            spawnNewCloudObject.GetComponent<MoveLeft>().speed *= objectSpeedMultiplier;
+            GameObject spawnNewPowerup = Instantiate(powerup, powerupRandomSpawn, powerup.transform.rotation);
+            spawnNewPowerup.GetComponent<MoveLeft>().speed *= objectSpeedMultiplier;
+
 
         }
 
@@ -91,9 +95,9 @@ public class GameManager : MonoBehaviour
         titleScreen.gameObject.SetActive(false);
     }
 
-    public void mediumStartGame(float mediumSpeed)
+    public void mediumStartGame()
     {
-        mediumSpeed = moveLeftVar.passSpeed *= 2;
+        objectSpeedMultiplier = 2;
         isGameActive = true;
         score = 0;
 
@@ -105,7 +109,7 @@ public class GameManager : MonoBehaviour
 
     public void hardStartGame()
     {
-        moveLeftVar.speed *= 3;
+        objectSpeedMultiplier = 3;
         isGameActive = true;
         score = 0;
 
