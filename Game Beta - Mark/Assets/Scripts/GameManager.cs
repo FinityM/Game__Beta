@@ -12,8 +12,8 @@ public class GameManager : MonoBehaviour
     private float xSpawn = 50;
     private float ySpawnRange = 9;
     private int score;
-    public float objectSpeedMultiplier = 1;
-    public bool isGameActive = false;
+    private float objectSpeedMultiplier = 1;
+    [HideInInspector]public bool isGameActive = false;
 
     public List<GameObject> objects;
     public List<GameObject> clouds;
