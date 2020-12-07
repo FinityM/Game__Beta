@@ -13,6 +13,7 @@ TagManager:
   - Missile
   - Rudolph
   - Game Manager
+  - Shield
   layers:
   - Default
   - TransparentFX

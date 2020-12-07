@@ -9,10 +9,14 @@ public class PlayerController : MonoBehaviour
     private float yBound = 11;
     private float verticalInput;
     private float horizontalInput;
-    public int pointValue;
-    public float speed = 20.0f;
+    private int pointValue;
+    private float speed = 20.0f;
+    private float invincibleTime = 3.0f;
+
+    private bool isInvincible;
 
     private GameObject rudolphObject;
+    private GameObject shieldObject;
     private Collider playerCollider;
     private AudioSource playerAudio;
     private GameManager gameManager;
@@ -20,6 +24,8 @@ public class PlayerController : MonoBehaviour
     public AudioClip explosionSound;
     public ParticleSystem pickedItemParticle;
     public ParticleSystem explodeParticle;
+
+    public GameObject powerupEnabler;
 
     // Start is called before the first frame update
     void Start()
@@ -77,15 +83,34 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Methods for powerup  
+    private void setInvincible()
+    {
+        isInvincible = true;
+        powerupEnabler.SetActive(true);
+        Debug.Log("Invincibility Active");
+
+        CancelInvoke("setKillable");
+        Invoke("setKillable", invincibleTime);
+
+    }
+
+    private void setKillable()
+    {
+        isInvincible = false;
+        powerupEnabler.SetActive(false);
+        Debug.Log("Invincibility Inactive");
+    }
+
     private void OnCollisionEnter(Collision other)
     {
-        //Will make power up functional in beta will act like goodie for now
+        //Setting up the powerup
         if (other.gameObject.CompareTag("Powerup"))
         {
+            setInvincible();
             playerAudio.PlayOneShot(goodiesSound, 1.0f);
             pickedItemParticle.Play();
             Destroy(other.gameObject);
-            gameManager.UpdateScore(30);
         }
 
         else if (other.gameObject.CompareTag("Goodies"))
@@ -93,31 +118,63 @@ public class PlayerController : MonoBehaviour
             playerAudio.PlayOneShot(goodiesSound, 1.0f);
             pickedItemParticle.Play();
             Destroy(other.gameObject);
-            gameManager.UpdateScore(5);
+            gameManager.UpdateScore(10);
         }
 
+        // If statement for the bomb
         else if (other.gameObject.CompareTag("Obstacle"))
         {
-            playerAudio.PlayOneShot(explosionSound, 1.0f);
-            explodeParticle.Play();
-            gameManager.isGameActive = false;
-            rudolphObject.SetActive(false);
-            playerCollider.enabled = !playerCollider.enabled;
-            Debug.Log("Game Over");
-            Destroy(other.gameObject);
-            gameManager.GameOver();
+            if (isInvincible == true)
+            {
+                playerAudio.PlayOneShot(explosionSound, 1.0f);
+                explodeParticle.Play();
+                gameManager.isGameActive = true;
+                rudolphObject.SetActive(true);
+                Destroy(other.gameObject);
+                Debug.Log("Testing invincibilty");
+            }
+            else
+            {
+                playerAudio.PlayOneShot(explosionSound, 1.0f);
+                explodeParticle.Play();
+                gameManager.isGameActive = false;
+                rudolphObject.SetActive(false);
+                playerCollider.enabled = !playerCollider.enabled;
+                Debug.Log("Game Over");
+                Destroy(other.gameObject);
+                gameManager.GameOver();
+
+            }
+
         }
 
+        // Seperate if statement for the missiles
         else if (other.gameObject.CompareTag("Missile"))
         {
-            playerAudio.PlayOneShot(explosionSound, 1.0f);
-            explodeParticle.Play();
-            gameManager.isGameActive = false;
-            rudolphObject.SetActive(false);
-            playerCollider.enabled = !playerCollider.enabled;
-            Debug.Log("Game Over");
-            Destroy(other.gameObject);
-            gameManager.GameOver();
+            if (isInvincible == true)
+            {
+                playerAudio.PlayOneShot(explosionSound, 1.0f);
+                explodeParticle.Play();
+                gameManager.isGameActive = true;
+                rudolphObject.SetActive(true);
+                Destroy(other.gameObject);
+                Debug.Log("Testing invincibilty");
+            }
+            else
+            {
+                playerAudio.PlayOneShot(explosionSound, 1.0f);
+                explodeParticle.Play();
+                gameManager.isGameActive = false;
+                rudolphObject.SetActive(false);
+                playerCollider.enabled = !playerCollider.enabled;
+                Debug.Log("Game Over");
+                Destroy(other.gameObject);
+                gameManager.GameOver();
+
+            }
+
         }
     }
+
+
 }
