@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] float objectSpawnRate = 3;
     [SerializeField] float powerupSpawnRate = 5;
     [SerializeField] float xSpawn = 50;
-    [SerializeField] float ySpawnRange = 9;
+    [SerializeField] float ySpawnRange = 7;
     private int score;
     [SerializeField] float objectSpeedMultiplier = 1;
     [HideInInspector] public bool isGameActive = false;
