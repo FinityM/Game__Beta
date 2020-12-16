@@ -6,7 +6,7 @@ public class Links : MonoBehaviour
 {
   public void OpenRepository()
     {
-        Application.OpenURL("https://github.com/FinityM/GameAlpha_Mark");
+        Application.OpenURL("https://github.com/FinityM/Game__Beta");
 
     }
 }
