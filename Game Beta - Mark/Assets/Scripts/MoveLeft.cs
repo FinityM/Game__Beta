@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class MoveLeft : MonoBehaviour
 {
-    public float speed;
-    private float toTheLeft = 50;
-    private PlayerController playerScript;
+    [SerializeField] public float speed;
+    [SerializeField] private float leftLimit = 50;
 
     // Start is called before the first frame update
     void Start()
     {
-        playerScript = GameObject.Find("Player").GetComponent<PlayerController>();
         
     }
 
@@ -22,29 +20,18 @@ public class MoveLeft : MonoBehaviour
         destroyObject();
     }
 
+    // Method for the left limit
     void destroyObject()
     {
-        if (transform.position.x < -toTheLeft && !gameObject.CompareTag("Background"))
+        if (transform.position.x < -leftLimit && !gameObject.CompareTag("Background"))
         {
             Destroy(gameObject);
         }
     }  
 
+    // Method for the objects to move left
     void moveLeft()
     {
         transform.Translate(Vector3.left * speed * Time.deltaTime, Space.World);
-    }
-
-    public float passSpeed
-    {
-        get
-        {
-            return this.speed;
-        }
-
-        set
-        {
-            speed = value;
-        }
     }
 }

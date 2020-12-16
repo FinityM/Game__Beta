@@ -469,6 +469,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e75580af988475469db1c203e7521a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectSpawnRate: 3
+  powerupSpawnRate: 5
+  xSpawn: 50
+  ySpawnRange: 9
   objectSpeedMultiplier: 1
   isGameActive: 0
   objects:
@@ -877,6 +881,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  leftLimit: 50
 --- !u!65 &615315121
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2793,6 +2798,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911498364, guid: 2e9750981cb03e34f9c801193ccfc76f, type: 3}
+      propertyPath: explosionSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 269c3b983e354da4aa4cf61a39adbc54, type: 3}
+    - target: {fileID: 1911498364, guid: 2e9750981cb03e34f9c801193ccfc76f, type: 3}
+      propertyPath: isInvincible
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 840499003, guid: 2e9750981cb03e34f9c801193ccfc76f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 840499003, guid: 2e9750981cb03e34f9c801193ccfc76f, type: 3}
+      propertyPath: BypassReverbZones
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 840499003, guid: 2e9750981cb03e34f9c801193ccfc76f, type: 3}
+      propertyPath: Loop
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e9750981cb03e34f9c801193ccfc76f, type: 3}

@@ -5,27 +5,25 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private float xBound = 16;
-    private float yBound = 11;
-    private float verticalInput;
-    private float horizontalInput;
-    private int pointValue;
-    private float speed = 20.0f;
-    private float invincibleTime = 3.0f;
+    [SerializeField] private float xBound = 16;
+    [SerializeField] private float yBound = 11;
+    [SerializeField] private float verticalInput;
+    [SerializeField] private float horizontalInput;
+    [SerializeField] private float speed = 20.0f;
+    [SerializeField] private float invincibleTime = 3.0f;
 
-    private bool isInvincible;
+    [HideInInspector] private bool isInvincible;
 
     private GameObject rudolphObject;
-    private GameObject shieldObject;
     private Collider playerCollider;
     private AudioSource playerAudio;
     private GameManager gameManager;
-    public AudioClip goodiesSound;
-    public AudioClip explosionSound;
-    public ParticleSystem pickedItemParticle;
-    public ParticleSystem explodeParticle;
+    [SerializeField] public AudioClip goodiesSound;
+    [SerializeField] public AudioClip explosionSound;
+    [SerializeField] public ParticleSystem pickedItemParticle;
+    [SerializeField] public ParticleSystem explodeParticle;
 
-    public GameObject powerupEnabler;
+    [SerializeField] public GameObject powerupEnabler;
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +49,7 @@ public class PlayerController : MonoBehaviour
         //Get the horizontal input
         horizontalInput = Input.GetAxis("Horizontal");
 
+        // Move while game is active
         if (gameManager.isGameActive)
         {
             // Move around the screen

@@ -7,23 +7,23 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    private float objectSpawnRate = 3;
-    private float powerupSpawnRate = 5;
-    private float xSpawn = 50;
-    private float ySpawnRange = 9;
+    [SerializeField] float objectSpawnRate = 3;
+    [SerializeField] float powerupSpawnRate = 5;
+    [SerializeField] float xSpawn = 50;
+    [SerializeField] float ySpawnRange = 9;
     private int score;
-    private float objectSpeedMultiplier = 1;
-    [HideInInspector]public bool isGameActive = false;
+    [SerializeField] float objectSpeedMultiplier = 1;
+    [HideInInspector] public bool isGameActive = false;
 
-    public List<GameObject> objects;
-    public List<GameObject> clouds;
-    public GameObject powerup;
-    public GameObject titleScreen;
+    [SerializeField] public List<GameObject> objects;
+    [SerializeField] public List<GameObject> clouds;
+    [SerializeField] public GameObject powerup;
+    [SerializeField] public GameObject titleScreen;
 
-    public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI gameOverText;
+    [SerializeField] public TextMeshProUGUI scoreText;
+    [SerializeField] public TextMeshProUGUI gameOverText;
 
-    public Button restartButton;
+    [SerializeField] public Button restartButton;
 
     // Start is called before the first frame update
     void Start()
@@ -82,7 +82,6 @@ public class GameManager : MonoBehaviour
         scoreText.text = "Score: " + score;
     }
 
-
     public void GameOver()
     {
         isGameActive = false;
@@ -98,6 +97,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Restart was pressed");
     }
 
+    // Methods to be used in on clicks at buttons
     public void easyStartGame()
     {
         isGameActive = true;
@@ -122,7 +122,6 @@ public class GameManager : MonoBehaviour
         titleScreen.gameObject.SetActive(false);
 
     }
-
     public void hardStartGame()
     {
         objectSpawnRate = 1;

@@ -60,6 +60,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 13
+  leftLimit: 50
+  explosionSound: {fileID: 0}
 --- !u!114 &6921566375184341064
 MonoBehaviour:
   m_ObjectHideFlags: 0
